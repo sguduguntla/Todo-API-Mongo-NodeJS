@@ -84,7 +84,7 @@ describe("GET /todos/:id", () => {
         var hexId = new ObjectId().toHexString();
         request(app).get(`/todos/${(new ObjectId()).toHexString()}`).expect(404).end(done);
     });
-    it("should return 404 for non-object ids", done => {
-        request(app).get("/todos/123abc").expect(404).end(done);
+    it("should return 400 for non-object ids", done => {
+        request(app).get("/todos/123abc").expect(400).end(done);
     });
 });
