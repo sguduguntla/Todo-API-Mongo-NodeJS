@@ -13,6 +13,9 @@ const {
 } = require("mongodb");
 const Todo = require('./models/todo');
 const User = require('./models/user');
+const {
+    authenticate
+} = require("./middleware/authenticate");
 
 var app = express();
 
@@ -123,7 +126,12 @@ app.post("/users", (req, res, next) => {
     }).catch(e => {
         res.status(400).send();
     });
-})
+});
+
+
+app.get("/users/me", authenticate, (req, res, next) => {
+    res.send(req.user);
+});
 
 app.listen(PORT, () => {
     console.log(`Started on port ${PORT}`);
