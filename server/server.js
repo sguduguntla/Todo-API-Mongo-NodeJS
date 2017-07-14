@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const express = require('express');
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3000;
@@ -76,6 +77,39 @@ app.delete("/todos/:id", (req, res, next) => {
         return res.status(400).send();
     }
 })
+
+app.patch("/todos/:id", (req, res, next) => {
+    var todoId = req.params.id;
+
+    var body = _.pick(req.body, ['text', 'completed']);
+
+    if (!ObjectId.isValid(todoId)) {
+        return res.status(400).send();
+    }
+
+    if (_.isBoolean(body.completed) && body.completed) {
+        body.completedAt = new Date().getTime();
+    } else {
+        body.completed = false;
+        body.completedAt = null;
+    }
+
+    Todo.findByIdAndUpdate(todoId, body, {
+        new: true
+    }).then(todo => {
+        if (!todo) {
+            return res.status(404).send();
+        }
+
+        res.send({
+            todo
+        });
+    }).catch(e => {
+        res.status(400).send();
+    })
+});
+
+
 app.listen(PORT, () => {
     console.log(`Started on port ${PORT}`);
 });
