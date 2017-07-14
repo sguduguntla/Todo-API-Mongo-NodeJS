@@ -58,7 +58,7 @@ app.get('/todos/:id', (req, res, next) => {
 });
 
 app.listen(PORT, () => {
-    console.log("Started on port 3000");
+    console.log(`Started on port ${PORT}`);
 });
 
 module.exports = {

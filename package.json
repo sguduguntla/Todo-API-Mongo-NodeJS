@@ -1,24 +1,28 @@
 {
-  "name": "todo-api-mongo",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server/server.js",
-  "scripts": {
-    "test": "mocha server/**/*.test.js",
-    "test-watch": "nodemon --exec 'npm test'"
-  },
-  "author": "Sriharsha Guduguntla",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.17.2",
-    "express": "^4.15.3",
-    "mongodb": "^2.2.30",
-    "mongoose": "^4.11.2"
-  },
-  "devDependencies": {
-    "expect": "^1.20.2",
-    "mocha": "^3.4.2",
-    "nodemon": "^1.11.0",
-    "supertest": "^3.0.0"
-  }
+    "name": "todo-api-mongo",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server/server.js",
+    "scripts": {
+        "start": "node server/server.js",
+        "test": "mocha server/**/*.test.js",
+        "test-watch": "nodemon --exec 'npm test'"
+    },
+    "engines": {
+        "node": "7.4.0"
+    },
+    "author": "Sriharsha Guduguntla",
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.17.2",
+        "express": "^4.15.3",
+        "mongodb": "^2.2.30",
+        "mongoose": "^4.11.2"
+    },
+    "devDependencies": {
+        "expect": "^1.20.2",
+        "mocha": "^3.4.2",
+        "nodemon": "^1.11.0",
+        "supertest": "^3.0.0"
+    }
 }
