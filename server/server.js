@@ -92,7 +92,7 @@ app.delete("/todos/:id", authenticate, (req, res, next) => {
     }
 })
 
-app.patch("/todos/:id", authenticate, (req, res, next) => {
+app.put("/todos/:id", authenticate, (req, res, next) => {
     var todoId = req.params.id;
 
     var body = _.pick(req.body, ['text', 'completed']);

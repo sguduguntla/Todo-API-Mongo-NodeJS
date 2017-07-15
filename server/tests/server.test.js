@@ -132,12 +132,12 @@ describe("DELETE /todos/:id", () => {
     });
 });
 
-describe("PATCH /todos/:id", () => {
+describe("PUT /todos/:id", () => {
     it("should update the todo", done => {
         var hexId = todos[0]._id.toHexString();
         var text = "This should be the new text";
 
-        request(app).patch(`/todos/${hexId}`).set('x-auth', users[0].tokens[0].token).send({
+        request(app).put(`/todos/${hexId}`).set('x-auth', users[0].tokens[0].token).send({
             completed: true,
             text: text
         }).expect(200).expect(res => {
@@ -151,7 +151,7 @@ describe("PATCH /todos/:id", () => {
         var hexId = todos[0]._id.toHexString();
         var text = "This should be the new text";
 
-        request(app).patch(`/todos/${hexId}`).set('x-auth', users[1].tokens[0].token).send({
+        request(app).put(`/todos/${hexId}`).set('x-auth', users[1].tokens[0].token).send({
             completed: true,
             text: text
         }).expect(404).end(done);
@@ -161,7 +161,7 @@ describe("PATCH /todos/:id", () => {
         var hexId = todos[1]._id.toHexString();
         var text = "This should be the new text";
 
-        request(app).patch(`/todos/${hexId}`).set('x-auth', users[1].tokens[0].token).send({
+        request(app).put(`/todos/${hexId}`).set('x-auth', users[1].tokens[0].token).send({
             completed: false,
             text: text
         }).expect(200).expect(res => {
